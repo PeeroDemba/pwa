@@ -1,101 +1,128 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { PiArrowsLeftRightBold } from "react-icons/pi";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [manual, setManual] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <>
+      <main className="mt-8 px-8 relative">
+        <h1 className="text-[24px] font-semibold mt-20 mb-16 md:hidden">
+          Welcome back
+        </h1>
+        <Image
+          src="/images/pexels-darina-belonogova.png"
+          alt="Background Photo"
+          width={1360}
+          height={471}
+          className="hidden md:block w-full"
+        />
+        <Image
+          src="/images/pexels-darina-belonogova-mobile.png"
+          alt="Background Photo"
+          width={1360}
+          height={471}
+          className="md:hidden block"
+        />
+        {!manual && (
+          <div className="bg-white w-full md:h-[377px] md:w-[408px] rounded-3xl md:px-12 pt-12 md:pt-16 pb-24 md:absolute top-[50%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]">
+            <h1 className="text-[24px] font-semibold mb-2 hidden md:block">
+              Welcome back
+            </h1>
+            <p className="text-[#585858] mb-8 hidden md:block">Login using:</p>
+            <button
+              type="button"
+              className="border-[#5d5d5d] border w-full md:w-[325px] rounded-[5rem] mb-8 flex justify-center items-center gap-4 py-4 px-16"
+            >
+              <FcGoogle size="1.5rem" />
+              <span className="text-[#5d5d5d]">Login with Google</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setManual(true);
+              }}
+              className="text-[#5d5d5d] hidden md:flex gap-4 items-center"
+            >
+              <PiArrowsLeftRightBold />
+              <span>Click to switch to manual</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setManual(true);
+              }}
+              className="text-[#5d5d5d] flex md:hidden gap-4 items-center"
+            >
+              <PiArrowsLeftRightBold />
+              <span>Tap to switch to manual</span>
+            </button>
+          </div>
+        )}
+        {manual && (
+          <div className="bg-white md:h-[377px] w-full md:w-[408px] rounded-3xl md:px-12 pt-12 md:pt-6 pb-8 md:absolute top-[50%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]">
+            <h1 className="text-[24px] font-semibold mb-6 hidden md:block">
+              Log In
+            </h1>
+            <div className="flex flex-col gap-6">
+              <input
+                type="text"
+                className="px-4 py-4 md:py-3 border border-[#5d5d5d] rounded-lg w-full md:w-[290px]"
+                placeholder="name@email.com"
+              />
+              <input
+                type="text"
+                className="px-4 py-4 md:py-3 border border-[#5d5d5d] rounded-lg w-full md:w-[290px]"
+                placeholder="please enter password"
+              />
+            </div>
+            <p className="text-[#898989] mt-2 mb-6">Forgot Password?</p>
+            <button
+              type="button"
+              className="md:rounded-[5rem] rounded-lg w-full md:w-max bg-black text-white py-4 md:py-2 px-10"
+            >
+              Proceed
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setManual(false);
+              }}
+              className="text-[#5d5d5d] hidden md:flex gap-4 items-center mt-4"
+            >
+              <PiArrowsLeftRightBold />
+              <span>Click to login with google</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setManual(false);
+              }}
+              className="text-[#5d5d5d] flex md:hidden gap-4 items-center mt-4"
+            >
+              <PiArrowsLeftRightBold />
+              <span>Tap to login with Google</span>
+            </button>
+          </div>
+        )}
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="bg-[#f5f5f5] text-[#484848] md:hidden px-8 pt-20 pb-8">
+        <div className="text-[14px] flex gap-2 justify-between mb-8">
+          <p>About</p>
+          <p>Products</p>
+          <p>Privacy</p>
+          <p>Terms</p>
+          <p>SME</p>
+        </div>
+        <div className="text-[14px] flex gap-2 justify-evenly mb-4">
+          <p>+234 927370584</p>
+          <p>support@test.com</p>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
