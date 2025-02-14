@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
@@ -10,8 +11,8 @@ export default function Home() {
 
   return (
     <>
-      <main className="mt-8 px-8 relative">
-        <h1 className="text-[24px] font-semibold mt-20 mb-16 md:hidden">
+      <main className="mt-8 px-4 md:px-8 relative">
+        <h1 className="text-[24px] font-semibold mt-12 mb-16 md:hidden">
           Welcome back
         </h1>
         <Image
@@ -29,7 +30,12 @@ export default function Home() {
           className="md:hidden block"
         />
         {!manual && (
-          <div className="bg-white w-full md:h-[377px] md:w-[408px] rounded-3xl md:px-12 pt-12 md:pt-16 pb-24 md:absolute top-[50%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]">
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-white w-full md:h-[377px] md:w-[408px] rounded-3xl md:px-8 pt-12 md:pt-16 pb-24 md:absolute top-[40%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]"
+          >
             <h1 className="text-[24px] font-semibold mb-2 hidden md:block">
               Welcome back
             </h1>
@@ -61,10 +67,15 @@ export default function Home() {
               <PiArrowsLeftRightBold />
               <span>Tap to switch to manual</span>
             </button>
-          </div>
+          </motion.div>
         )}
         {manual && (
-          <div className="bg-white md:h-[377px] w-full md:w-[408px] rounded-3xl md:px-12 pt-12 md:pt-6 pb-8 md:absolute top-[50%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]">
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-white md:h-[377px] w-full md:w-[408px] rounded-3xl md:px-8 pt-12 md:pt-6 pb-8 md:absolute top-[40%] left-24 md:shadow-[1px_0.5px_150px_2.5px_#428ac14b]"
+          >
             <h1 className="text-[24px] font-semibold mb-6 hidden md:block">
               Log In
             </h1>
@@ -107,7 +118,7 @@ export default function Home() {
               <PiArrowsLeftRightBold />
               <span>Tap to login with Google</span>
             </button>
-          </div>
+          </motion.div>
         )}
       </main>
       <footer className="bg-[#f5f5f5] text-[#484848] md:hidden px-8 pt-20 pb-8">
