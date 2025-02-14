@@ -2,7 +2,7 @@ const staticPWA = "PWA-v1";
 const assets = [
   "/",
   "/build/index.html",
-  "/build/css/globals.css",
+  "/build/_next/static/css/937d3d06078c0aa8.css",
   "/build/js/app.js",
   "/images/pexels-darina-belonogova-mobile.png",
   "/images/pexels-darina-belonogova.png",
