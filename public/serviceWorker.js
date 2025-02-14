@@ -1,9 +1,9 @@
 const staticPWA = "PWA-v1";
 const assets = [
   "/",
-  "/_next/static/index.html",
-  "/_next/static/css/globals.css",
-  "/_next/static/js/app.js",
+  "index.html",
+  "/css/globals.css",
+  "/js/app.js",
   "/images/pexels-darina-belonogova-mobile.png",
   "/images/pexels-darina-belonogova.png",
 ];
